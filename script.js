@@ -3,17 +3,18 @@ const tanggal = document.getElementById("date");
 const tambah = document.getElementById("Add");
 const todoList = document.getElementById("todoList");
 const hapus = document.getElementById("delete");
+const filter = document.getElementById("Filter");
 
 let todos = [];
 
-function renderTodos() {
-  if (todos.length === 0) {
+function renderTodos(list = todos) {
+  if (list.length === 0) {
     todoList.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-gray-500">No task found</td></tr>`;
     return;
   }
 
   todoList.innerHTML = "";
-  todos.forEach((todo, index) => {
+  list.forEach((todo, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td class="py-2">${todo.task}</td>
@@ -28,8 +29,8 @@ function renderTodos() {
   });
 }
 
-tambah.addEventListener("click", () => {
-     event.preventDefault();
+tambah.addEventListener("click", (event) => {
+  event.preventDefault();
   const task = todo.value.trim();
   const date = tanggal.value;
   if (task === "" || date === "") return alert("Isi semua kolom!");
@@ -37,6 +38,11 @@ tambah.addEventListener("click", () => {
   todo.value = "";
   tanggal.value = "";
   renderTodos();
+});
+
+filter.addEventListener('click', () => {
+  const sortedTodos = [...todos].sort((a, b) => new Date(a.date) - new Date(b.date));
+  renderTodos(sortedTodos);
 });
 
 function deleteTodo(index) {

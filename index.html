@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo list</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex justify-center items-center h-screen bg-gradient-to-br from-sky-200 to-sky-300 font-[Segoe_UI]">
+
+  <div class="bg-sky-100 rounded-2xl text-center shadow-lg max-w-md animate-pop">
+    <div class="text-4xl my-4 animate-float text-sky-800 font-mono"><b>Todo List </b></div>
+     <div> <form>
+        <label for="todo"></label>
+        <input type="text" name="todo" id="todo" placeholder="Add a todo.." class="font-mono rounded-md border-2 border-sky-200">
+        <label for="date"></label>
+        <input type="date" name="date" id="date" placeholder="dd/mm/yyyy " class="font-mono text-neutral-400 rounded-md border-2 border-sky-200">
+        
+      </form>
+      <br>
+     </div>
+     <div class="flex justify-between mb-4">
+      <button id="Add" class="bg-sky-400 hover:bg-sky-500 px-3 py-1 rounded-md font-bold text-white text-lg">+</button>
+      <button id="delete" class="bg-sky-400 hover:bg-sky-500 px-3 py-1 rounded-md font-bold text-white font-mono">Delete</button>
+    </div>
+     <table class="w-full text-sm text-left border-t border-gray-600 font-mono">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Due Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="todoList">
+        <tr>
+          <td colspan="4" class="text-center font-mono">No task found</td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
